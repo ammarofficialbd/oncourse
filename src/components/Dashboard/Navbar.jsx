@@ -4,8 +4,8 @@ import { IoSearch } from "react-icons/io5";
 
 // Styled components
 const NavbarContainer = styled.div`
-  height: 40px;
   width: 100%;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,16 +18,27 @@ const Title = styled.h2`
   color: #1a73e8;
 `;
 
+const SearchContainer = styled.div`
+  position: relative;
+  width: 400px;
+`;
+
+const SearchIcon = styled(IoSearch)`
+  position: absolute;
+  top: 50%;
+  left: 29px;
+  transform: translateY(-50%);
+  color: #888;
+`;
+
 const SearchBar = styled.input`
- width: 100%;
-  flex: 1;
+  width: 100%;
   background: #F7F7FF;
-  padding: 8px;
+  padding: 6px 40px; /* Add padding to the left to make space for the icon */
   margin: 0 20px;
-  border: 1px solid #ccc;
   border-radius: 20px;
   outline: none;
-  border
+  border: none;
   font-size: 14px;
 `;
 
@@ -43,6 +54,12 @@ const ProfileImage = styled.img`
   margin-right: 10px;
 `;
 
+const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
 const ProfileName = styled.div`
   font-size: 14px;
   color: #333;
@@ -53,23 +70,19 @@ const ProfileRole = styled.div`
   color: #888;
 `;
 
-const ProfileInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 // Navbar component
 const Navbar = () => {
   return (
     <NavbarContainer>
       <Title>Overview</Title>
-    
-      <SearchBar placeholder="Search ...." />
-     
       
+      <SearchContainer>
+        <SearchIcon />
+        <SearchBar placeholder="Search ...." />
+      </SearchContainer>
+
       <ProfileContainer>
-        <ProfileImage src="https://via.placeholder.com/40" alt="Profile" />
+        <ProfileImage src="https://mui.com/static/images/avatar/2.jpg" alt="Profile" />
         <ProfileInfo>
           <ProfileName>Alexa Calen</ProfileName>
           <ProfileRole>Student</ProfileRole>

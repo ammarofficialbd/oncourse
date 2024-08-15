@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../theme';
 import { FiGrid, FiBook, FiCheckSquare, FiDollarSign, FiPieChart, FiBarChart2, FiLifeBuoy, FiSettings } from 'react-icons/fi';
-
+import logo from '../../../public/icon.png'
 // Styled components
 const SidebarContainer = styled.div`
   width: 250px;
@@ -14,7 +14,9 @@ const SidebarContainer = styled.div`
 `;
 
 const Logo = styled.div`
-  font-size: 24px;
+  margin-top:10px;
+  margin-left:10px;
+  font-size: 18px;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: bold;
   margin-bottom: 30px;
@@ -36,10 +38,11 @@ const NavList = styled.ul`
 
 const NavItem = styled.li`
   margin-bottom: 20px;
+  padding-left: 1rem;
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.colors.textPrimary};
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
 
   &:hover {
@@ -92,20 +95,23 @@ const SidebarData = [
 
 const SideBar = () => {
     const [selected, setSelected] = useState(0)
+
   return (
     <ThemeProvider theme={theme}>
       <SidebarContainer>
         <div>
           <Logo>
-            <LogoIcon>🌟</LogoIcon> ONCourse
+            <LogoIcon> <img src={logo} aria-placeholder='logo'/></LogoIcon> ON <span className='black'> Course </span>
           </Logo>
           <NavList>
             {
                 SidebarData.map((item, index)=>{
                     return (
-                        <div className={selected === index ? 'menuItem active' : 'menuItem'}>
-                            <item.icon/>
-                            <span> {item.heading}</span>
+                        <div className={selected === index ? 'menuItem active' : 'menuItem'} onClick={()=> setSelected(index)}>
+                          <div className='gap'> 
+                          <item.icon/>
+                            <span className='hedaing'> {item.heading}</span>
+                          </div>
                         </div>
                     )
                 })
